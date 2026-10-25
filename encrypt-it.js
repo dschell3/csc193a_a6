@@ -14,8 +14,8 @@
   window.addEventListener("load", init);
 
   /**
-   * Runs once the page has loaded. Sets up the event handlers
-   * for the buttons on the page.
+   * Runs once the page has loaded. Sets up the click handlers
+   * for the "Encrypt It!" and "Reset" buttons.
    */
   function init() {
     console.log("Window loaded!");
@@ -27,14 +27,12 @@
     resetButton.addEventListener("click", handleReset);
   }
 
-  // Add any other functions in this area (you should not implement your
-  // entire program in the init function, for similar reasons that
-  // you shouldn't write an entire Java program in the main method).
-    /**
-   * Logs a test message when the "Encrypt It!" button is clicked.
+  /**
+   * Gets the text from the input textarea, encrypts it with a
+   * shift cipher, and shows the result in the #result paragraph.
    */
   function handleEncrypt() {
-    console.log("Encrypt button clicked!");
+    console.log("Button clicked!");
 
     let inputText = document.getElementById("input-text").value;
     let cipherText = shiftCipher(inputText);
@@ -42,7 +40,7 @@
   }
 
   /**
-   * Clears the input textarea.
+   * Clears the input textarea and the result paragraph.
    */
   function handleReset() {
     let input = document.getElementById("input-text");
@@ -51,6 +49,34 @@
     input.value = "";
     input.innerHTML = "";
     document.getElementById("result").textContent = "";
+  }
+
+  /**
+   * Returns an encrypted version of the given text, where each letter
+   * is shifted alphabetically ahead by 1 letter, and 'z' wraps around
+   * to 'a'. Upper and lowercase letters are treated the same, and the
+   * result is all lowercase. Non-letters are left unchanged.
+   * @param {string} text - the message to encrypt
+   * @returns {string} the encrypted message
+   */
+  function shiftCipher(text) {
+    text = text.toLowerCase();
+    let result = "";
+    let aCode = "a".charCodeAt(0); // 97
+
+    for (let i = 0; i < text.length; i++) {
+      let ch = text[i];
+      if (ch < "a" || ch > "z") {
+        // not a letter (space, number, punctuation), keep it as is
+        result += ch;
+      } else {
+        // turn the letter into 0-25, add 1, wrap with % 26, turn back into a letter
+        let position = text.charCodeAt(i) - aCode;
+        let newPosition = (position + 1) % 26;
+        result += String.fromCharCode(newPosition + aCode);
+      }
+    }
+    return result;
   }
 
 })();
