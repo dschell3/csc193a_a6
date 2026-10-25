@@ -48,6 +48,7 @@
     // starting text, so it won't clear anything once the user has typed.
     input.value = "";
     input.innerHTML = "";
+    document.getElementById("result").textContent = "";
   }
 
 })();
