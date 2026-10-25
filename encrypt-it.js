@@ -11,7 +11,7 @@
    */
   window.addEventListener("load", init);
 
-    /**
+  /**
    * Runs once the page has loaded. Sets up the event handlers
    * for the buttons on the page.
    */
@@ -20,6 +20,9 @@
 
     let encryptButton = document.getElementById("encrypt-it");
     encryptButton.addEventListener("click", handleClick);
+
+    let resetButton = document.getElementById("reset");
+    resetButton.addEventListener("click", handleReset);
   }
 
   // Add any other functions in this area (you should not implement your
@@ -30,6 +33,17 @@
    */
   function handleClick() {
     console.log("Button clicked!");
+  }
+
+  /**
+   * Clears the input textarea.
+   */
+  function handleReset() {
+    let input = document.getElementById("input-text");
+    // .value is what the user typed. innerHTML only sets the textarea's
+    // starting text, so it won't clear anything once the user has typed.
+    input.value = "";
+    input.innerHTML = "";
   }
 
 })();
