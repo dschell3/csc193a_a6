@@ -19,7 +19,7 @@
     console.log("Window loaded!");
 
     let encryptButton = document.getElementById("encrypt-it");
-    encryptButton.addEventListener("click", handleClick);
+    encryptButton.addEventListener("click", handleEncrypt);
 
     let resetButton = document.getElementById("reset");
     resetButton.addEventListener("click", handleReset);
@@ -31,8 +31,12 @@
     /**
    * Logs a test message when the "Encrypt It!" button is clicked.
    */
-  function handleClick() {
-    console.log("Button clicked!");
+  function handleEncrypt() {
+    console.log("Encrypt button clicked!");
+
+    let inputText = document.getElementById("input-text").value;
+    let cipherText = shiftCipher(inputText);
+    document.getElementById("result").textContent = cipherText;
   }
 
   /**
