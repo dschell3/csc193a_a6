@@ -11,12 +11,12 @@
    */
   window.addEventListener("load", init);
 
-  /**
-   * TODO: Write a function comment using JSDoc.
+    /**
+   * Runs once the page has loaded. Sets up the event handlers
+   * for the buttons on the page.
    */
   function init() {
-    // Note: In this function, we usually want to set up our event handlers
-    // for UI elements on the page.
+    console.log("Window loaded!");
   }
 
   // Add any other functions in this area (you should not implement your
