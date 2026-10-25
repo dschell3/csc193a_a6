@@ -1,5 +1,7 @@
 /*
- * Starter file 
+ * Encrypt-It!
+ * Takes a message from the textarea and outputs an encrypted version
+ * using a shift cipher. The Reset button clears the input and result.
  */
 (function() {
   "use strict";
